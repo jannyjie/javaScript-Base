@@ -81,6 +81,21 @@ number實作基於[IEEE 754] 二進位浮點數算數標準所以當你執行 0.
 console.log(Math.abs(0.1+0.2-0.3) <= Number.EPSILON); // true
 
 ```
+#### boolean 布林值
+boolean 布林值 值有 true / false
+#### null / undefined
+雖然這兩種值套過 Boolean() 強制轉型成 boolean 時, 都會代表 false 的意思但還是有區別
+> undefined : 此變數還沒給值所以不知道是什麼
+> null : 此變數可曾經有值也可能沒有 但現在是沒有的
+
+如果強制透過 Number() 強制為兩者轉型是什麼
+```javascript=
+Number( null ); // 0
+Number( undefined ); // NaN
+```
+
+// 在非全域的作用範圍下undefined允許被當成變數名稱使用 但完全不建議這樣做
+
 
 
 
