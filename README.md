@@ -70,3 +70,17 @@ var b = 10;
 console.log(`Fifteen is ${a+b} and not ${2*a+b}.`);
 // Fifteen is 15 and not 20.
 ```
+#### number 數字
+除了常見的整數與小數點一類的數字外, 另外還有幾種特殊的數字: Infinty(無限大) \ -Infinty(負無限大), 以及NaN(不是數值, Not a Number)
+NaN與任何數字作數學運算, 結果都是NaN 也就是說NaN 並不等於任何數字甚至自己
+NaN就字面上來說它並不是一個數字但你用typeof(NaN)判斷型態它又是number
+
+number實作基於[IEEE 754] 二進位浮點數算數標準所以當你執行 0.5 + 0.9 === 1.4 的時候會得到false 
+但可以用 es6 提供的最小精度值
+```javascript=
+console.log(Math.abs(0.1+0.2-0.3) <= Number.EPSILON); // true
+
+```
+
+
+
