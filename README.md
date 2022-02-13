@@ -1,5 +1,4 @@
 # javaScript-008
-> [TOC]
 ## javaScript的起源與基礎(上)
 ### 基礎知識與資料型別
 #### 判斷型別的方式typeof
@@ -40,4 +39,34 @@ var str = 'Hello' + 'World';  // OK
 var str = 'Hello \ 
 Hello \
 Hello';  // OK
+
+var str = `Hello \ 
+Hello \
+Hello`;  // OK
+```
+#### 樣板字面值
+由一般一串與 $ {} 所組成
+
+##### 允許將變數直接砍入字串
+```javascript=
+var str = '30';
+var age = 'I am a' + str + 'year-old engineer.';
+
+consle.log(age);
+// I am a  30 year-old engineer.
+```
+也可以改成
+```javascript=
+var str = '30';
+var age = `I am a ${str} year-old engineer.`;
+
+consle.log(age);
+// I am a  30 year-old engineer.
+```
+甚至想要內崁運算式也是可以
+```javascript=
+var a = 5;
+var b = 10;
+console.log(`Fifteen is ${a+b} and not ${2*a+b}.`);
+// Fifteen is 15 and not 20.
 ```
