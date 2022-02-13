@@ -185,5 +185,161 @@ Array.isArray({});     // false
 Array.isArray(null);  // false
 Array.isArray(undefined);  // false
 ```
+### 運算式與運算子
+> 敘式句 : 執行某個動作像是變數的宣告 賦值 迴圈和 if 判斷式等等都可以被歸類於此
+> 運算式 : 就是產一個值 'var a = 10 * 10;'
+運算式的 四則運算 加 減 乘 除 都屬於運算子的一種
 
+#### 比較運算子
+比較後得到 ture / false
 
+> 相等 == 全等 ===
+> 不等於 != !== : != 會自動轉型 反之 不會
+
+## javaScript的起源與基礎(下)
+### 自動轉型的規則
+前面有提到在兩個等號 == 的比較運算式下
+> 其中一個為 Boolean 的情況下會將 true 轉型為 數字 再進行比較
+> 如果遇到字串與數字做比較的情況下 則會將字串透過 Number() 嘗試轉型為數字後在進行比較
+> 如果其中一方是物件的情況下而另一方是基本型則會透過物件的 valueOf() 方法取得對應的基本型別的值進行比較
+
+當兩個物件進行比較時要看兩者是否指向同一個 實體 只要在指向同一個實體時才會回傳 true
+
+### 數值的大於 > 小於 < 大於等於 >= 小於等於 <=
+> 兩者都是單純數字 則就是字面大小比較
+> 如果其中一個是數字而另一個不是 則需要將另一個轉為數字才能做比較
+> 如果兩個都是字串則會依照字母順序進行比較
+> 如果其中一個是 boolean 的情況則會把 true 看成 1 false 看成 0 在進行比較
+> 如果是物件的情況下則會先透過物件的 valueOf() 方法 先求得對應的數值若物件沒有 valueOf() 方法的話 則會透過 toString() 轉型在進行比較
+
+### 指派運算子
+```javascript=
+// 運算子      // 實際行為
+ a += b        a = a + b
+ a -=b         a = a - b
+ a *= b        a = a * b
+ a /= b        a = a / b
+ a %= b        a = a % b
+ ```
+
+ ### 邏輯運算子
+ 
+ ```javascript=
+var a = 123;
+var b = "abc";
+var c = null;
+
+console.log(a && b);  // "abc"
+console.log(a || b);  // 123
+console.log( c && a );// null
+console.log(c || b); // "abc"
+console.log(c || a); // 123
+ ```
+ 一般來說應該會得到 boolean 的值 不是 true 就是 false 
+但在解說前先說明一下 : 
+
+> " AND && " : 比較 左邊 && 右邊 的值 當左右值相同則會回傳 true 若不是則會是 false
+> " OR || "  : 左邊 || 右邊 只要符合其中一個值則會回傳 true 若不是則會是 false
+> " NOT ! "  :  以一個驚嘆號來表示原本是 true 結果經過轉換後會到 false 而 false 會變成 true  所以很多人會用 !!XXX 來取代 Boolean(XXX) 透過兩次的 NOT 操作即可以判斷某數值 Boolean轉換的結果
+
+但嚴格來說只有 NOT! 運算子才會回傳 true 或 false
+
+你可能會說可是我在 if 條件式裡面帶入
+ ```javascript=
+if(a || b) {
+    ....
+}
+
+if(a && b ) {
+    ...
+}
+ ```
+ 這類的是可以正常執行的
+
+ 在 JavaScript 這門程式當中我們可以分成兩種 值
+ > 那些經過ToBoolean 轉換後得的 false 值
+ > 以及其他的值通常最後都會變成 true
+
+ ### 轉換為空值的
+ > undefined
+ > Null
+ > +0 -0 or NaN
+ > 空字串"" 或 ''
+ 
+ 除了上面的值其他 Boolean("111") 會是 true
+
+ #### 制轉型 - ToBoolean、Falsy、Truthy
+
+##### Falsy 值
+這邊再整理一次增加 BigInt 的版本，所以以後就是五項 8 個 Falsy 值
+
+> ''
+> +0、-0、NaN ( 無效的數字 )
+> null、undefined
+> false
+> 0n
+
+##### Falsy 物件
+Table 10 指出所有物件都是 truthy，那如果包裹一個 falsy 的物件包裹器轉成 Boolean 會是什麼呢 🤔
+ ```javascript=
+let a = new Boolean(false);
+
+    let b = new Number(0);
+
+    let c = new String('');
+
+    false、0、'' 基本型別值強制轉型都會是 false
+
+    typeof a; // object
+
+    Boolean({}); // true
+
+    Boolean(a); // true
+
+    Boolean( a && b && c ); // true
+ ```
+ ##### Truthy 值
+ javaScript 沒有真正定義一個 truthy 值清單，所以除了五項 8 個 falsy 值之外的，全部都是 truthy 值
+ ```javascript=
+    let a = 'false';
+
+    let b = '0';
+
+    let c = '""';
+
+    let d = Boolean ( a && b && c );
+
+    d; // true
+
+    a b c 皆為 string 值，所以都是 truthy
+
+    注意 c 是包含 "" 的字串，所以會是 true
+
+    ------------------------------------------
+
+    How about these?
+
+    let e = [];
+
+    let f = {};
+
+    let g = function(){};
+
+    let h = Boolean ( e && f && g );
+
+    h; // true
+
+    因為 []、{}、function(){} 這三個都沒有出現在五項 8 個 falsy 清單，不過也因為它們是 Object 根據 Table 10 皆為 true
+ ```
+
+另外 && || 所產生的值不一定會是 Boolean 而是 兩者其一 在判斷前須對左邊數值進行檢查
+> 如果是 Boolean 類型就做 ToBoolean 判斷是 falsy 或是 truthy 來轉換成對應的true OR false
+> 對 || 運算子來說若第一個數值傳換為 true 則回傳第一個數值否則回傳第二個數值
+> 對 && 運算子來說若第一個數值傳換為 true 則回傳第一個數值否則回傳第二個數值
+
+所以在 if 條件式判斷中 JavaScript 會針對回傳後的數值再度做 ToBoolean 判斷是 Falsy 或 truthy 這也就是為什麼在 && OR || 的結果可以當作 true 與 false 的 判斷
+
+ ```javascript=
+console.log(!!'false' == !!'true'); // true
+console.log(!!'false' === !!'true'); // true
+ ```
