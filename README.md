@@ -343,3 +343,121 @@ let a = new Boolean(false);
 console.log(!!'false' == !!'true'); // true
 console.log(!!'false' === !!'true'); // true
  ```
+### 流程判斷與迴圈
+#### 條件語法 (1) : if...else
+```javascript=
+if(條件式){
+    
+}else{
+
+}
+ ```
+ ```javascript=
+if(條件式){
+    
+}else if{
+
+}else if{
+
+}else{
+
+}
+ ```
+ #### 條件語法 (2) : switch
+```javascript=
+switch(){
+    case :
+      break;
+    
+    case :
+      break;
+
+    default:
+      break;
+}
+ ```
+```javascript=
+var month = 1;
+switch(Math.ceil(month/3)){
+    case 1:
+      console.log('春天');
+      break;
+    
+    case 2:
+      console.log('夏天');
+      break;
+
+    case 3:
+      console.log('秋天');
+      break;
+
+    case 4:
+      console.log('冬天');
+      break;
+
+    default:
+      console.log('月份錯誤');
+      break;
+}
+ ```
+#### 條件語法 (3) :  三元運算子
+```javascript=
+(條件) ? [數值/運算子(1)] : [數值/運算子(2)];
+ ```
+ 如果 條件為 true 此時回傳數值 1 否則回傳數值 2
+
+過去會用 if...else
+
+ ```javascript=
+if(age >= 18){
+    status = '成人';
+} else {
+    status = '小孩';
+}
+ ```
+
+轉換成 三元運算子
+
+ ```javascript=
+var status = (age >= 18) ? '成人' : '小孩';
+ ```
+
+ #### 條件語法 (3) :  for 迴圈
+
+一個簡單的for迴圈 ↓ 
+```javascript=
+var i;
+
+for (i = 0; i < 10; i++){
+    // 某件事
+    console.log(i);
+}
+ ```
+
+#### break 與 continue
+> break 會直接跳離會圈
+> continue 會跳過一次然後繼續下一次迴圈
+
+所以假設如果要跳離3 的倍數
+```javascript=
+for (var i = 1; i < 10; i++){
+    
+    if( i % 3 === 0){
+        continue;
+    }
+
+    console.log(i);
+}
+ ```
+
+ ```javascript=
+var arr = [0, 0, 0, 7, 0, 9, 0, 4, 8, 0];
+
+for (var i = 0; i < arr.length; i++){
+    
+    if( arr[i] !== 0){
+      console.log(arr[i]);
+      break;
+    }  
+}
+ ```
