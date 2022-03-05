@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<div>
+  <label for="quantity">Quantity</label>
+  <input type="number" name="quantity" id="quantity" value="1" min='1' required>
+</div>
+<div>
+  <label for="price">Price</label>
+  <input type="text" name="price" id="price" value="1.00"  required>
+</div>
+<div>
+  <label for="tax">tax</label>
+  <input type="text" name="tax" id="tax" value="0.0"  required>
+</div>
+<div>
+  <label for="discount">discount</label>
+  <input type="text" name="discount" id="discount" value="0.0"  required>
+</div>
+<div>
+  <label for="total">total</label>
+  <input type="text" name="total" id="total" value="0.00" >
+</div>
+
+<input type="submit" value="按鈕" id="submit">
+
+<script>
+function calculate(){
+
+var quantity = document.getElementById('quantity').value;
+var price = document.getElementById('price').value;
+var tax = document.getElementById('tax').value;
+var discount = document.getElementById('discount').value;
+
+
+
+total = quantity * price;
+
+
+
+tax /= 100;
+tax++;
+total *= tax;
+
+tax = tax/100;
+tax =tax + 1;
+total = total * tax;
+
+total -= discount;
+
+document.getElementById('total').value = total;
+
+}
+
+
+var theForm = document.getElementById('submit');
+
+theForm.addEventListener('click', calculate, false);
+
+
+</script>
+</body>
+</html>
