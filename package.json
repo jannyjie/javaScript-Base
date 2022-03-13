@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
   "devDependencies": {
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0"

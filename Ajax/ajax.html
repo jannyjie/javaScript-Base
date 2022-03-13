@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="create">
+        <input type="text" placeholder="name">
+        <a href="javascript:;">Create</a>
+    </div>
+    <div id="delete">
+        <input type="text" placeholder="id">
+        <a href="javascript:;">Delete</a>
+    </div>
+    <ul id="users"></ul>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                url: 'https://www.travel.taipei/open-api/swagger/docs/V1/',
+                method: 'get',
+                dataType: 'json',
+                data:{}
+            }).done(function(res){  
+                $('#users').empty()
+                // res.tags.forEach(element => {
+                    
+                // });
+                let tag = res.tags;
+                
+                for(var i = 0; i < tag.length; i++){
+                    $('#users').append('<li>' + i  + tag[i].description + '</li>');
+                }
+            }).fail(function(err){
+                console.log(err);
+            });
+
+            $('#create > a').on('click', function(){
+                let name = $('#create > input').val().trim();
+                if (!name) return false;
+                $.ajax({
+                    url:'https://www.travel.taipei/open-api/swagger/docs/V1/',
+                    method: 'post',
+                    dataType: 'json',
+                    data: {
+                        name: name
+                    }
+                }).done(function(res){  
+                    console.log(res);
+                }).fail(function(err){
+                    console.log(err);
+                });
+            });
+
+            $('#delete > a').on('click', function(){
+                let name = $('#delete > input').val().trim();
+                if (!name) return false;
+                $.ajax({
+                    url:'https://www.travel.taipei/open-api/swagger/docs/V1/',
+                    method: 'delect',
+                    dataType: 'json',
+                    data: {
+                        name: name
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+</html>
