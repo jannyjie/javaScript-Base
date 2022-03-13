@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event 事件</title>
+</head>
+<body>
+    <input type="text" id="one">
+    <br>
+    <input type="text" id="two">
+    <p class="twop"></p>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+            $('#one').on('click', function(e){
+                $(this).after('<p>目標元素:' + e.target + '</p>')
+                       .after('<p>目標元素:' + e.type + '</p>');
+            });
+            
+            $('#two').on('mousedown', function(e){
+                $('.twop').text(e.type + ':' + e.which);
+            })
+        })();
+    </script>
+</body>
+</html>

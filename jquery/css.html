@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存取CSS</title>
+</head>
+<body>
+    <h2>.css() 用來抓取符合的css</h2>
+    <p>
+        .css(css屬性名稱);
+        .css(css屬性名稱, css屬性名稱);
+        .css(鍵 / 值, 鍵 / 值...);
+    </p>
+    <p>
+        $('h1').css('color', 'red');
+        $('h1').css({
+            'color': 'red',
+            'backgroud-color': 'yellow',
+            'text-shadow': 'gray 3px 3px'
+        });
+    </p>
+    <br>
+    <br>
+    <h3>範例二</h3>
+    <h4>Hi Jquery</h4>
+    
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+            $('h4').on('mouseover', function(){
+                $(this).css({'color': 'red', 'text-show': 'gray 3px 3px', 'font-size': '30px', 'transition': 'font-size 1s'});
+            });
+            $('h4').on('mouseout', function(){
+                $(this).css({'color': 'black', 'text-show': 'none', 'font-size': '12px'});
+            })
+        })();
+
+        // $(document).ready(function(){
+           
+        // });
+    </script>
+</body>
+</html>

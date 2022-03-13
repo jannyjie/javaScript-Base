@@ -1,0 +1,17 @@
+[
+    {
+        "title": "JavaScript",
+        "price": "550",
+        "description": "網頁程式基礎閉學入門"
+    },
+    {
+        "title": "Jquery",
+        "price": "350",
+        "description": "網頁程式敲門磚讓設計最好入門"
+    },
+    {
+        "title": "Vue",
+        "price": "1050",
+        "description": "網頁程式進階前端框架"
+    }
+]

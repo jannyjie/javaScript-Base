@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件處理</title>
+    <style>
+        p {
+          color: red;
+        }
+        span {
+          color: blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="one">
+    <p id="onep"></p>
+
+    <h2>Has an attached custom event.</h2>
+    <button>Trigger custom event</button>
+    <span style="display:none;"></span>
+
+    <h2>點擊兩下</h2>
+    <input type="text" id="two">
+    <p id="twop"></p>
+
+    <h2>點擊兩下多事件</h2>
+    <input type="text" id="three">
+    <p id="threep"></p>
+
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+            $('#one').on('click', function(){
+                $('#onep').text('單行文字方塊被案一下').fadeToggle();
+            });
+            
+            $( "h2" ).on( "myCustomEvent", function( event, myName ) {
+            $( this ).text( myName + ", hi there!" );
+            $( "span" )
+                .stop()
+                .css( "opacity", 1 )
+                .text( "myName = " + myName )
+                .fadeIn( 30 )
+                .fadeOut( 1000 );
+            });
+            $( "button" ).click(function () {
+                $( "h2" ).trigger( "myCustomEvent", [ "John" ] ).fadeToggle("slow");
+            });
+
+
+            $('#two').on('click dblclick', function(){
+                $('#twop').text('單行文字方塊被按兩下');
+            });
+            
+            $('#three').on({
+                'click': function(){$('#threep').text('單行文字方塊被按一下');},
+                'dblclick': function(){ $('#threep').text('單行文字方塊被按兩下')},
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作集合中的每個物件</title>
+</head>
+<body>
+    <h2>.each() 用來針對物件或陣列重複運算</h2>
+    <p>
+        .each(物件, callbacl);
+        .each(陣列, callbacl);
+        .each( callbacl);
+    </p>
+    <br>
+    <br>
+    <h3>範例二</h3>
+    <ul>
+        <li><a href="a.html">連結01</a></li>
+        <li><a href="b.html">連結02</a></li>
+        <li><a href="c.html">連結03</a></li>
+    </ul>
+    
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+          var sum = 0;
+          var arr = [1,2,3,4,5];
+          $.each(arr, function(index, value){
+            sum += value;
+          });
+          window.alert(sum);
+          console.log(sum);
+        })();
+
+        $(document).ready(function(){
+            $('li').each(function(index, element){
+               window.alert($(this).text())
+            });
+        });
+    </script>
+</body>
+</html>

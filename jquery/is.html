@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檢查目前選擇器的元素集合是否符合參數所指定的條件</title>
+</head>
+<body>
+    <div>
+        <p>点我查看父元素是否是 div。</p>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+            $("p").click(function(){
+                if ($("p").parent().is("h1")) {
+                    alert("p 的父元素是 h1"); 
+                }else{
+                    alert("p 的父元素是 div");
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

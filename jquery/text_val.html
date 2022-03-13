@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存取元素內容</title>
+</head>
+<body>
+    <h2>text()</h2>
+    <button id="btn">顯示內容</button>
+    <p id="msg"></p>
+
+
+    <!-- val() 方法返回或设置被选元素的值。
+    元素的值是通过 value 属性设置的。该方法大多用于 input 元素。如果该方法未设置参数，则返回被选元素的当前值。 -->
+    
+    <h2>val()</h2>
+    <p>Name: <input type="text" name="user" value="Hello World" /></p>
+    <button id="ww">改变文本域的值</button>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+           $("#btn").on("click", function(){
+                $("#msg").text('hi , Jquery!!!!');
+           });
+        })();
+
+        $(document).ready(function(){
+            $("#ww").click(function(){
+                $(":text").val("Hello Kitty");
+            });
+        });
+    </script>
+</body>
+</html>

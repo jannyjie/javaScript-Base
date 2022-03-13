@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>從目前選擇元素集合中移除參數所指定元素</title>
+</head>
+<body>
+    <ul>
+        <li>01</li>
+        <li>02</li>
+        <li id="notli">03</li>
+        <li>04
+            <ul>
+                <li>a01</li>
+                <li>a02</li>
+                <li>a03</li>
+            </ul>
+        </li>
+    </ul>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function(){
+            // 除了 notli ID 以外 文字顏色改為紅色
+            $('li').not(document.getElementById('notli')).css('color', 'red');
+
+            // li> ul 選中篩選集合的子孫
+            $('li').has('ul').css('font-size', '30px');
+            // li 選定的參數 :odd 為偶數
+            $('li').filter(':odd').css('color', 'yellow');
+        })();
+    </script>
+</body>
+</html>
