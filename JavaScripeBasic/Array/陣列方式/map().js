@@ -1,7 +1,7 @@
 // 今天要介紹第三個資料結構 Map，此 Map 跟 Array.prototype.map 可是完全不一樣的東西! 千萬不要搞錯了。
 // https://ithelp.ithome.com.tw/articles/10214746
 // ES6 Map
-let myMap = new Map();
+let my = new Map();
 
 var keyString = 'I am string',
     keyObj = {},
