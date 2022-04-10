@@ -46,3 +46,11 @@ Array.prototype.map = function(callback) {
 
 const result1 = data.map(item => item.price);
 const result2 = data.map(item => item.price * 0.9 + 30);
+
+// 方法四：includes
+// ES2016 加入了 Array.prototype.includes()，可在陣列中尋找指定元素，回傳 true（找到） 或 false（沒找到）。注意，IE 不支援。
+
+var fruits = ['apple', 'orange', 'banana'];
+
+console.log(fruits.includes('orange')); // true
+console.log(fruits.includes('pineapple')); // false

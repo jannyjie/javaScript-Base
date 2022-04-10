@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行變色</title>
+    <!--引用bootstrap-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        li{
+            padding:10px 0;
+        }
+        .hover{
+            background-color: #cccccc!important;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //獲取ul裡的所有li賦給陣列lis
+            var lis = document.getElementsByTagName("li");
+            for(var i = 0; i <= lis.length; i++ ){
+                //偶數被2整除
+                if(i%2 == 0)
+                {
+//                    將是偶數的li背景設魏#eeee
+                    lis[i].style.backgroundColor = "#eee"
+                }
+                //滑鼠經過li,當前底色變數
+                lis[i].onmouseover = function () {
+                    //this指的是時間的呼叫者
+                    this.className = "hover"
+                }
+                lis[i].onmouseout = function () {
+                    //this指的是時間的呼叫者
+                    this.className = ""
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container-fluid text-center" style="margin-top: 50px">
+    <ul class="list-unstyled">
+        <li>書聲雨聲讀書聲，聲聲入耳</li>
+        <li>書聲雨聲讀書聲，聲聲入耳</li>
+        <li>書聲雨聲讀書聲，聲聲入耳</li>
+        <li>書聲雨聲讀書聲，聲聲入耳</li>
+        <li>書聲雨聲讀書聲，聲聲入耳</li>
+    </ul>
+</div>
+
+</body>
+</html>
