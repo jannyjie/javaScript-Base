@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询多條件</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-12">
+                    <p>{{ '目前在第  '+ num_page +'  頁 唷 !'}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" v-if="num_page > 1"><a class="page-link" href="#" @click="num_page--">Previous</a></li>
+                            <!--   Math.ceil  四捨五入向上進位   -->
+                            <!-- <li class="page-item" v-for="items of Math.ceil(isMyData.length/num_view)">
+                                <a class="page-link" href="#">{{items}}</a>
+                            </li> -->
+                            <template  >
+                                <select name="paginator"   v-model="num_page" class="custom-select e-paginator__select">
+                                    <option  :value="items" @click="ch_page(items)" v-for="(items, index) of Math.ceil(isMyData.length/num_view)" :key="index">第 {{ items }} 頁</option>
+                                </select>
+                            </template>
+                            <li class="page-item" v-if="num_page < isMyData.length/num_view"><a class="page-link" href="#" @click="num_page++">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-12" v-for="(item) of isMyData"
+                    v-if="item.id >= (num_page*num_view)-(num_view-1) && item.id < (num_page*num_view)-(num_view-1)+num_view ">
+                    <p>{{ item.title}}</p>
+                    <p>{{ item.content}}</p>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    num_page: 1,
+                    num_view: 5, //每頁顯示筆數    改它看變化
+                    isMyData: [{
+                            id: 1,
+                            title: "標題1",
+                            content: "內容一",
+                        }, {
+                            id: 2,
+                            title: "標題2",
+                            content: "內容2",
+                        }, {
+                            id: 3,
+                            title: "標題3",
+                            content: "內容3",
+                        }, {
+                            id: 4,
+                            title: "標題4",
+                            content: "內容4",
+                        }, {
+                            id: 5,
+                            title: "標題5",
+                            content: "內容5",
+                        }, {
+                            id: 6,
+                            title: "標題6",
+                            content: "內容6",
+                        },
+                        {
+                            id: 7,
+                            title: "標題7",
+                            content: "內容7",
+                        },
+                        {
+                            id: 8,
+                            title: "標題8",
+                            content: "內容8",
+                        },
+                        {
+                            id: 9,
+                            title: "標題9",
+                            content: "內容9",
+                        },
+                        {
+                            id: 10,
+                            title: "標題10",
+                            content: "內容10",
+                        },
+                    ]
+                };
+            },
+
+            methods: {
+                // back(){
+                //     this.num_page--;
+                // },
+                // add() {
+                //     this.num_page++;
+                // },
+                ch_page(num) {
+                    this.num_page = num;
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

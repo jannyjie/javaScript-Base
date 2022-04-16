@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询多條件</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="搜尋" v-model="sousuo">
+        <table border="1">
+            <th>編號</th>
+            <th>英雄</th>
+            <th>技能</th>
+            <tr v-for="(item, index) in sousuo1()" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.jn}}</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    sousuo:'',
+                    list:[
+                        {
+                            id: 1,
+                            name: 'janny',
+                            jn: '射箭'
+                        },
+                        {
+                            id: 2,
+                            name: 'jack',
+                            jn: '騎馬'
+                        },
+                        {
+                            id: 3,
+                            name: 'jenny',
+                            jn: '攀岩'
+                        }
+                    ]
+                };
+            },
+            computed: {
+                Search(){
+                    if(this.sousuo){
+                        return this.list.filter((value) => {
+                            return value.name.includes(this.sousuo) || value.jn.includes(this.sousuo);
+                        })
+                    }
+                }
+            },
+            methods: {
+                sousuo1(){
+                    if(!this.sousuo){
+                        return this.list;
+                    }
+                    return this.Search;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

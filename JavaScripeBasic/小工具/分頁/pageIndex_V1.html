@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询多條件</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul v-for="item in data" >
+            <li>{{item.time}}{{item.sort}}</li>
+        </ul>
+        <nav aria-label="Page navigation example" id="app">
+            <ul class="pagination">
+                <li v-show="page_num!=1" class="page-item"><a class="page-link" href="#" @click="go_one">頁首</a></li>
+                <li v-show="page_num!=1" class="page-item"><a class="page-link" href="#" @click="go_up">
+                        </a> </li> <li class="page-item"
+                            v-for="(item,key) of  Math.ceil(data_num/view_num)-page_num+1">
+                            <a class="page-link" href="#" @click="go_page(item+(page_num-1))"
+                                v-if="key<5">{{ item+(page_num-1) }}</a>
+                </li>
+                <li v-show="page_num!=13" class="page-item"><a class="page-link" href="#" @click="next">></a></li>
+                <li v-show="page_num!=13" class="page-item"><a class="page-link" href="#" @click="go_end">頁尾</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    data: [{
+                            id: 1,
+                            time: "2020 / 10 / 21",
+                            sort: "工程資訊",
+                            title: "如何預防裝修詐騙?",
+                        },
+                        {
+                            id: 2,
+                            time: "2020 / 10 / 19",
+                            sort: "最新設計",
+                            title: "工業風，無可抗拒的復古魅力!",
+                        },
+                        {
+                            id: 3,
+                            time: "2020 / 10 / 01",
+                            sort: "最新影音",
+                            title: "紅磚疊磚小知識",
+                        },
+                        {
+                            id: 4,
+                            time: "2020 / 09 / 05",
+                            sort: "精品磁磚",
+                            title: "經典磁磚，帶你走在時尚尖端",
+                        },
+                        {
+                            id: 5,
+                            time: "2020 / 08 / 15",
+                            sort: "最新設計",
+                            title: "北歐風，收納機能宅!",
+                        },
+                        {
+                            id: 6,
+                            time: "2020 / 07 / 19",
+                            sort: "工程資訊",
+                            title: "舊屋翻新，專業一條龍服務",
+                        },
+                        {
+                            id: 7,
+                            time: "2020 / 10 / 21",
+                            sort: "工程資訊",
+                            title: "如何預防裝修詐騙?",
+                        },
+                        {
+                            id: 8,
+                            time: "2020 / 10 / 19",
+                            sort: "最新設計",
+                            title: "工業風，無可抗拒的復古魅力!",
+                        },
+                        {
+                            id: 9,
+                            time: "2020 / 10 / 01",
+                            sort: "最新影音",
+                            title: "紅磚疊磚小知識",
+                        },
+                        {
+                            id: 10,
+                            time: "2020 / 09 / 05",
+                            sort: "精品磁磚",
+                            title: "經典磁磚，帶你走在時尚尖端",
+                        },
+                        {
+                            id: 11,
+                            time: "2020 / 10 / 21",
+                            sort: "工程資訊",
+                            title: "如何預防裝修詐騙?",
+                        },
+                        {
+                            id: 12,
+                            time: "2020 / 10 / 19",
+                            sort: "最新設計",
+                            title: "工業風",
+                        },
+                        {
+                            id: 13,
+                            time: "2020 / 10 / 01",
+                            sort: "最新影音",
+                            title: "紅磚疊磚小知識",
+                        },
+                        {
+                            id: 14,
+                            time: "2020 / 09 / 05",
+                            sort: "精品磁磚",
+                            title: "經典磁磚",
+                        },
+                        {
+                            id: 15,
+                            time: "2020 / 08 / 15",
+                            sort: "最新設計",
+                            title: "北歐風，收納機能宅!",
+                        },
+                        {
+                            id: 16,
+                            time: "2020 / 07 / 19",
+                            sort: "工程資訊",
+                            title: "專業一條龍服務",
+                        },
+                        {
+                            id: 17,
+                            time: "2020 / 10 / 21",
+                            sort: "工程資訊",
+                            title: "如何預防裝修詐騙?",
+                        },
+                        {
+                            id: 18,
+                            time: "2020 / 10 / 19",
+                            sort: "最新設計",
+                            title: "無可抗拒的復古魅力!",
+                        },
+                        {
+                            id: 19,
+                            time: "2020 / 10 / 01",
+                            sort: "最新影音",
+                            title: "紅磚疊磚小知識",
+                        },
+                        {
+                            id: 20,
+                            time: "2020 / 09 / 05",
+                            sort: "精品磁磚",
+                            title: "帶你走在時尚尖端",
+                        },
+                        {
+                            id: 21,
+                            time: "2020 / 10 / 21",
+                            sort: "工程資訊",
+                            title: "如何預防裝修詐騙?",
+                        },
+                        {
+                            id: 22,
+                            time: "2020 / 10 / 19",
+                            sort: "最新設計",
+                            title: "工業風，無可抗拒的復古魅力!",
+                        },
+                        {
+                            id: 23,
+                            time: "2020 / 10 / 01",
+                            sort: "最新影音",
+                            title: "紅磚疊磚小知識",
+                        },
+                        {
+                            id: 24,
+                            time: "2020 / 09 / 05",
+                            sort: "精品磁磚",
+                            title: "經典磁磚，帶你走在時尚尖端",
+                        },
+                        {
+                            id: 25,
+                            time: "2020 / 08 / 15",
+                            sort: "最新設計",
+                            title: "北歐風，收納機能宅!",
+                        },
+                    ],
+                    view_num: 2,
+                    data_num: '',
+                    page_num: 1,
+                };
+            },
+            created() {
+                this.data_num = this.data.length;
+            },
+            
+            methods: {
+                go_page(pages){
+                    console.log(pages)
+                    this.page_num = pages;
+                },
+                go_up(){
+                    if (this.page_num <= 1) {
+                        this.page_num = 1
+                    } else {
+                        this.page_num = this.page_num - 1;
+                    }
+                },
+                next (){
+                    if (this.page_num >= 13) {
+                        this.page_num = 13
+                    } else {
+                        this.page_num = this.page_num + 1;
+                    }
+                },
+                go_one() {
+                    this.page_num = 1;
+                },
+                go_end (){
+                    this.page_num = 13;
+                },
+                dataFn(){
+                    this.data = this.data / data_num;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

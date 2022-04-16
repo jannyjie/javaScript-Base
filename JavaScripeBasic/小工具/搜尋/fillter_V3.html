@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询的简单方法实例</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入内容" placeholder="请您输入地址" v-model="value" />
+        <button class="el-icon-search" @click="searchAdress">BUTTON</button>
+        <!--模糊匹配数据列表-->
+        <ul v-if="tabMaterial.length !== 0">
+            <li v-for="(item,index) in tabMaterial" :key="index" >
+                {{item.name}}{{item.js}}
+            </li>
+        </ul>
+        <div v-else>
+            找不到@@
+        </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    value: "",
+
+                    tabMaterial: [
+
+                        {
+                            name: "上海",
+                            js: 'sss',
+                        },
+
+                        {
+                            name: "北京",
+                            js: 'sswws',
+                        },
+
+                        {
+                            name: "重庆",
+                            js: 'sswws',
+                        }
+
+                    ],
+                    NewItemsList: [],
+                    NewItemsSearch: [],
+                };
+            },
+            created() {
+                this.NewItemsList = this.tabMaterial;
+                // this.searchAdress();
+            },
+            watch:{
+                value: function(){
+                    if (this.value === '') {
+                        this.tabMaterial = this.NewItemsList;
+                        return;
+                    };
+                },
+            },
+            methods: {
+                searchAdress() {
+                    var _this = this;
+                    const NewItems = []
+                    this.tabMaterial.map(function (item) {
+                        if (item.name.search(_this.value.trim()) != -1 || item.js.search(_this.value.trim()) != -1) {
+                            NewItems.push(item);
+                            this.Open = false;
+                            return;
+                        }
+                    });
+
+                    this.NewItemsSearch = NewItems;
+                    this.tabMaterial = this.NewItemsSearch;
+
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

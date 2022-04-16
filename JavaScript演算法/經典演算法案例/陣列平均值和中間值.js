@@ -2,7 +2,7 @@
 
 // 取得陣列長度
 // 加總數值
-// 取得平均（數值總和 / 陣列長度）
+// 取得平均（數值˙[ㄨㄠ / 陣列長度）
 
 let values = [2, 56, 3, 41, 0, 4, 100, 23];
 let sum = values.reduce((previous, current) => current += previous);
