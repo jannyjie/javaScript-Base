@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>作業練習：元件變換</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="images/favicon.ico" rel="shortcut icon">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/regular.js" integrity="sha384-t7yHmUlwFrLxHXNLstawVRBMeSLcXTbQ5hsd0ifzwGtN7ZF7RZ8ppM7Ldinuoiif" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>    <script src="/javascripts/vendor.js"></script>
+
+  </head>
+  
+  <body class="bg-lighter">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Vue.js 練習手冊</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/basic/dev.html">基礎教學</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/template/basic.html">模板指令</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/components/basic.html">組件</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/vue_set.html">常用 API</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/es6/let_const.html">ES6</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+    <div class="container my-5">
+      <div class="row">
+        
+          <div class="col-md-3">
+            
+<div>
+  <h6 class="text-capitalize text-muted">components</h6>
+  
+    
+      <a href="/components/basic.html"  class="btn btn-block btn-link">
+        基礎元件
+      </a>
+    
+  
+    
+      <a href="/components/function_return.html"  class="btn btn-block btn-link">
+        元件必須使用 function return
+      </a>
+    
+  
+    
+      <a href="/components/prop_basic.html"  class="btn btn-block btn-link">
+        由外到內的資料傳遞
+      </a>
+    
+  
+    
+      <a href="/components/prop_adv.html"  class="btn btn-block btn-link">
+        Props 注意事項
+      </a>
+    
+  
+    
+      <a href="/components/prop_type.html"  class="btn btn-block btn-link">
+        Props 的型別
+      </a>
+    
+  
+    
+      <a href="/components/emit.html"  class="btn btn-block btn-link">
+        向外層傳送事件(Data)
+      </a>
+    
+  
+    
+      <a href="/components/slot.html"  class="btn btn-block btn-link">
+        Slot 插槽替換
+      </a>
+    
+  
+    
+      <a href="/components/is.html"  class="btn btn-block btn-link">
+        動態組建切換
+      </a>
+    
+  
+    
+      <a href="/components/eventbus.html"  class="btn btn-block btn-link">
+        Event Bus
+      </a>
+    
+  
+    
+      <a href="/components/homework_component.html"  class="btn btn-block btn-primary active">
+        作業練習：元件變換
+      </a>
+    
+  
+</div>
+          </div>
+        
+        <div class="col-md-9 post">      
+          <!-- 練習開始 -->
+          <h1 class="mt-0 text-muted">作業練習：元件變換</h1>
+          
+<h3>模板練習作業：Ajax 資料內容呈現</h3>
+<p>本作業一定要用到元件。</p>
+<div class="alert alert-secondary">
+  <p>提示：</p>
+  <ol class="mb-0">
+    <li>將資料內容透過 "元件" 呈現</li>
+    <li>製作城市過濾選項</li>
+    <li>將內層資料透過 emit 傳遞到外層 (作為另一個關注城市的呈現)</li>
+    <li>依據不同污染呈現不同色彩</li>
+    <li>加分題：透過 localStorage 儲存上次關注的城市</li>
+  </ol>
+</div>
+
+<div class="container my-5">
+  <!-- 程式碼 Beginning -->
+  <div id="app">
+    <!-- 選單 -->
+    <select name="" id="" class="form-control mb-3" v-model="selected">
+      <option value="" disabled>--- 請選擇城市 ---</option>
+      <option :value="item" v-for="(item, key) in location" :key="key"> {{item}} </option>
+    </select>
+    <div>
+      <!-- 關注城市 -->
+      <h4>關注城市</h4>
+      <div class="card-columns">
+        <city class="card" v-for="(item, key) in staredData" :key="item.SiteName" :cities='item' @update-star="updateStar(item)">
+          <template slot="star-icon">
+            <a href="#" class="float-right">
+              <i class="fas fa-star"></i>
+            </a>
+          </template>
+        </city>
+      </div>
+    </div>
+    <hr>
+    <!-- 所有/選取城市 -->
+    <h4>選取城市</h4>
+    <div class="card-columns">
+      <city class="card" v-for="(item, key) in filterData" :key="item.SiteName" :cities="item" @update-star="updateStar(item)">
+      </city>
+    </div>
+  </div>
+
+</div>
+<!-- X-Template -->
+<script type="text/x-template" id="city">
+  <div class="card" :class="statusCheck(cities.Status)">
+    <div class="card-header">{{ cities["County"] }} - {{ cities["SiteName"] }}
+      <a href="#" class="float-right" @click.prevent="addToStared">
+        <slot name="star-icon">
+          <i class="far fa-star"></i>
+        </slot>
+      </a>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled">
+        <li>AQI 指數: {{ cities["AQI"] }} </li>
+        <li>PM2.5: {{ cities["PM2.5"] }}</li>
+        <li>說明: {{ cities["Status"] }}</li>
+      </ul>
+      {{ cities["PublishTime"] }}
+    </div>
+  </div>
+</script>
+
+<script>
+// API 來源
+// https://opendata.epa.gov.tw/Data/Contents/AQI/
+
+// API 來源
+// https://opendata.epa.gov.tw/Data/Contents/AQI/
+
+Vue.component("city", {
+  props: ["cities"],
+  template: "#city",
+  methods: {
+    statusCheck: function(status) {
+      switch (status) {
+        case "良好":
+          return "status-aqi1";
+          break;
+        case "普通":
+          return "status-aqi2";
+          break;
+        case "對敏感族群不健康":
+          return "status-aqi3";
+          break;
+        case "對所有族群不健康":
+          return "status-aqi4";
+          break;
+        case "非常不健康":
+          return "status-aqi5";
+          break;
+        case "危害":
+          return "status-aqi6";
+          break;
+        default:
+          break;
+      }
+    },
+    addToStared: function() {
+      this.$emit("update-star");
+    }
+  }
+});
+
+var app = new Vue({
+  el: "#app",
+  data: {
+    data: [], // 原本的 JSON 資料
+    location: [], // 篩選出的不重複縣市 (選單)
+    selected: "", // 選取的縣市 (= filter)
+    stared: JSON.parse(localStorage.getItem("listData")) || [] // 加入關注的縣市 (建立LocalStorage)
+  },
+  // 請在此撰寫 JavaScript
+  methods: {
+    getData: function() {
+      const vm = this;
+      const api = "http://opendata2.epa.gov.tw/AQI.json";
+      // const api = "https://cors-anywhere.herokuapp.com/http://opendata2.epa.gov.tw/AQI.json";
+
+      // 使用 jQuery AJAX
+      $.get(api).then(function(response) {
+        vm.data = response;
+
+        // 取出不重複的縣市作為選單
+        let origin = [];
+        for (let i = 0; i < vm.data.length; i++) {
+          origin.push(vm.data[i].County);
+        }
+        vm.location = Array.from(new Set(origin));
+      });
+    },
+    updateStar: function(selectItem) {
+      // console.log(selectItem);
+      const vm = this;
+      // 如果 stared 裡沒有 selectItem.SiteName 就新增 (push)
+      if (!vm.stared.includes(selectItem.SiteName)) {
+        vm.stared.push(selectItem.SiteName);
+        // 如果有的話，則移除 (splice)
+      } else {
+        for (let i = 0; i <= vm.stared.length; i++) {
+          if (vm.stared[i] == selectItem.SiteName) {
+            vm.stared.splice(i, 1);
+            break;
+          }
+        }
+      }
+      // 更新 LocalStorage
+      localStorage.setItem("listData", JSON.stringify(vm.stared));
+    }
+  },
+  computed: {
+    // 所有縣市 (選取縣市)
+    filterData: function() {
+      const vm = this;
+      // 沒選擇縣市 => 列出所有城市 (已關注城市除外)
+      if (vm.selected == "") {
+        return vm.data.filter(item => {
+          // 每筆資料中的 SiteName 如果不存在 vm.stared 中 (-1) 就回傳
+          return vm.stared.indexOf(item.SiteName) === -1;
+        });
+      } else {
+        // 有選擇縣市 => 列出所有該縣市的地區 (已關注城市除外)
+        return vm.data.filter(item => {
+          return (
+            item.County == vm.selected &&
+            vm.stared.indexOf(item.SiteName) === -1
+          );
+        });
+      }
+    },
+    staredData: function() {
+      const vm = this;
+      return vm.data.filter(function(selectItem) {
+        // 每筆資料中的 SiteName 如果有在 vm.stared 中就回傳
+        return vm.stared.indexOf(selectItem.SiteName) > -1;
+      });
+    }
+  },
+  // (created: To call a function on page load)
+  mounted: function() {
+    this.getData();
+  }
+});
+
+</script>
+<!-- 
+狀態對應表
+'良好',
+'status-aqi2' '普通',
+'status-aqi3' '對敏感族群不健康',
+'status-aqi4' '對所有族群不健康',
+'status-aqi5' '非常不健康',
+'status-aqi6' '危害'
+--> 
+<style>
+.status-aqi2 {
+  background-color: #ffff00;
+}
+.status-aqi3 {
+  background-color: #ff7e00;
+}
+.status-aqi4 {
+  background-color: #ff0000;
+}
+.status-aqi5 {
+  background-color: #8f3f97;
+}
+.status-aqi6 {
+  background-color: #7e0023;
+}
+</style>
+
+ 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
