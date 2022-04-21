@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileApi顯示圖片</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <button class="btn btn-info" @click="$refs.file.click()">upload</button>
+        <input ref="file" type="file" class="d-none" v-on:change="handleFileUpload()">
+        <div>{{file.name}}</div>     
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    file: ""
+                };
+            },
+            // mounted(){
+            // },
+            methods: {
+                handleFileUpload: function () {
+                    this.file = this.$refs.file.files[0];
+                },
+            },
+            // watch:{
+            // }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Vue.js] 簡單計時器</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="text-center">{{time}}</h1>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    timer: null,
+                    time: 99
+                };
+            },
+            mounted() {
+                this.timer=setInterval(this.countdown, 1000);
+            },
+            methods: {
+                countdown() {
+                    this.time --;
+                    if(this.time==0){
+                    clearInterval(this.timer)
+                    }
+                }
+            },
+            beforeDestroy() {
+                clearInterval(this.timer);
+            }
+            // watch:{
+            //     timer: function(){
+            //         this.timer = setInterval(this.countdown, 1000);
+            //     }
+            // }
+        });
+    </script>
+</body>
+
+</html>
