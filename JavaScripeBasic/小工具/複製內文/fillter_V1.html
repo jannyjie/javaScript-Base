@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询多條件</title>
+</head>
+
+<body>
+    <div id="copythis">function CopyTextToClipboard(id) {
+
+        var TextRange = document.createRange();
+
+        TextRange.selectNode(document.getElementById(id));
+
+        sel = window.getSelection();
+
+        sel.removeAllRanges();
+
+        sel.addRange(TextRange);
+
+        document.execCommand("copy");
+
+        alert("複製完成！") //此行可加可不加
+
+        }</div>
+
+    <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')">
+
+        <i class="fas fa-clipboard"></i> 單鍵複製程式碼
+
+    </a> 
+    <!-- <script src="https://unpkg.com/vue@2.5.22"></script> -->
+    <script>
+        function CopyTextToClipboard(id) {
+
+            var TextRange = document.createRange();
+
+            TextRange.selectNode(document.getElementById(id));
+
+            sel = window.getSelection();
+
+            sel.removeAllRanges();
+
+            sel.addRange(TextRange);
+
+            document.execCommand("copy");
+
+            alert("複製完成！") //此行可加可不加
+
+        }
+    </script>
+</body>
+
+</html>

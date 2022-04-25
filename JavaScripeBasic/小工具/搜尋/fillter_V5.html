@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实现模糊查询的简单方法实例</title>
+    <style>
+        span.hl {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="search" class="search"  maxlength="20" placeholder="要搜尋的評論">
+        <ul class="comments">
+            <!-- <li class="comment" v-for="item in comments" :key="item.id">
+                <span class="title">{{item.text}}</span>
+                <span class="comment-id">{{item.id}}</span>
+            </li> -->
+            <!-- <li class="comment" v-for="(item, index) in matchWord" :key="item.id">
+                <span class="title" v-html="highlight(item.text)"></span>
+                <span class="comment-id" v-html="highlight(item.id.toString())"></span>
+            </li> -->
+            <li class="comment" v-for="item in matchWord" :key="item.id">
+                <div class="content" v-html="highlight(item.text,item.id.toString())"></div>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    search: '',
+                    comments : [
+                        { text: 'Love this!', id: 523423 },
+                        { text: 'Super good', id: 823423 },
+                        { text: 'You are the best', id: 2039842 },
+                        { text: 'Ramen is my fav food ever', id: 123523 },
+                        { text: 'Nice Nice Nice!', id: 542328 }
+                    ]
+                };
+            },
+            computed: {
+                matchWord () {
+                    let regWord = new RegExp(this.search, 'gi')
+                    return this.comments.filter(item => item.text.match(regWord) || item.id.toString().match(regWord))
+                }
+            },
+            methods: {
+                // highlight (text) {
+                //     let regWord = new RegExp(this.search, 'gi')
+                //     return text.replace(regWord, `<span class="hl">${this.search}</span>`)
+                // }
+                highlight (word, id) {
+                    let regWord = new RegExp(this.search, 'gi')
+                    let titleWord = word.replace(regWord, `<span class="hl">${this.search}</span>`)
+                    let idWord = id.replace(regWord, `<span class="hl">${this.search}</span>`)
+                    return this.search === '' ? `<span class="title">${word}</span><span class="comment-id">${id}</span>` : `<span class="title">${titleWord}</span><span class="comment-id">${idWord}</span>`
+                }
+            }
+            // created() {
+               
+            // },
+            // watch:{
+            // },
+            // methods: {
+            // }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileApi顯示圖片</title>
+</head>
+
+<body>
+    <div id="app">
+        <button id="firstBtn" @click="testClick()" ref="aa">{{testMsg}}</button>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    testMsg: '原始直'
+                };
+            },
+           
+            // mounted(){
+            // },
+            methods: {
+                testClick(){
+                    let that = this;
+                    that.testMsg = '修改後的值';
+                    console.log(that.$refs.aa.innerText); // 
+                }
+            },
+            // watch:{
+            // }
+        });
+    </script>
+</body>
+
+</html>
