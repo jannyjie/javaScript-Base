@@ -1446,6 +1446,26 @@ const funB = function(callback) {
 };
 
 funA( funB );
+
+
+
+function a (callback){
+  console.log(1);
+}
+
+function b(){
+  console.log(2);
+  
+  setTimeout(() => {
+       console.log(3);
+  }, 0);
+}
+
+a(b());
+
+2
+1
+3
 ```
 
 ## 立即被呼叫的函式

@@ -27,6 +27,8 @@
 //     }
 // }
 
+
+
 var send = document.querySelector('.send');
 send.addEventListener('click', signup(), false);
 
