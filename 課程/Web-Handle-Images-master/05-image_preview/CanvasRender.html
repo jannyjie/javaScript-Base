@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CanvasRender</title>
+    <style>
+        canvas{display: block;}
+    </style>
+</head>
+<body>
+    <input id="file" type="file"/>
+    <canvas id="canvas"></canvas>
+    <script>
+        const file = document.getElementById("file");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        file.addEventListener("change", e=>{
+            let image = new Image();
+            image.src = URL.createObjectURL(e.target.files[0]);
+            image.onload = () => {
+                const w = image.width;
+                const h = image.height;
+                canvas.width = w
+                canvas.height = h
+                ctx.drawImage(image, 0, 0, w, h);
+            }
+        });
+
+
+    </script>
+</body>
+</html>

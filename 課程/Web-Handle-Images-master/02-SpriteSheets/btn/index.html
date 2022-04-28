@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>button</title>
+    <style>
+        *{ padding: 0; margin: 0; box-sizing: border-box;}
+        html, body{
+            width: 100%;
+            height: 100%;
+            background-image: url("./bg.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #app{
+            width: 250px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        a{
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        a#btn1{
+            background-image: url("./ButtonDown.png");
+            background-size: 100px auto;
+            background-position: center;
+        }
+        a#btn1:hover{
+            background-image: url("./ButtonHover.png");
+        }
+
+        a#btn2{
+            background-image: url("./ButtonSp.png");
+        }
+        a#btn2:hover{
+            background-position: -100px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a id="btn1">1</a>
+        <a id="btn2">2</a>
+    </div>
+</body>
+</html>

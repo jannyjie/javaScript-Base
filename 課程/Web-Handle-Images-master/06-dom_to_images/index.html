@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>假的!產生器</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app">
+        <h1>假的!產生器</h1>
+        <div id="world" ref="dom">
+            <img src="./pic.png" height="450" width="600">
+            <h2 class="txt1">{{text1}}</h2>
+            <h2 class="txt2">{{text2}}</h2>
+            <h2 class="txt3">{{text3}}</h2>
+            <h2 class="txt4">{{text4}}</h2>
+        </div>
+        <div class="txtBox">
+            <ul>
+                <li>
+                    <p>第一格</p>
+                    <input id="inp1" type="text" :placeholder="text1" maxlength="16" v-model="text1">
+                </li>
+                <li>
+                    <p>第二格</p>
+                    <input id="inp2" type="text" :placeholder="text2" maxlength="16" v-model="text2">
+                </li>
+                <li>
+                    <p>第三格</p>
+                    <input id="inp3" type="text" :placeholder="text3" maxlength="16" v-model="text3">
+                </li>
+                <li>
+                    <p>第四格</p>
+                    <input id="inp4" type="text" :placeholder="text4" maxlength="16" v-model="text4">
+                </li>
+            </ul>
+        </div>
+        <a id="downLoadbtn" @click="downloadImg" href="javascript:;">產生圖片</a>
+            
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="http://danml.com/js/download2.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                text1: "今天晚上你回家打開門一看",
+                text2: "你老公跟別的女人在睡覺",
+                text3: "假的！",
+                text4: "哎呀！我眼睛業障重啊！",
+            },
+            methods:{
+                downloadImg(){
+                    const dom = this.$refs.dom;
+                    html2canvas(dom,{
+                        onrendered: canvas=> this.domtoimageload(canvas)
+                    });
+                },
+                domtoimageload(canvas) {
+                    const base64 = canvas.toDataURL("image/png");
+                    // const img = new Image();
+                    // img.src = base64;
+                    // document.body.appendChild(img);
+                    download(base64, "test.png", "image/png");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

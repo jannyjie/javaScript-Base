@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>exif</title>
+    <style>
+        canvas{display: block; width: 500px;}
+    </style>
+</head>
+<body>
+    <input id="file" type="file"/>
+    <canvas id="canvas"></canvas>
+    <script src="./exif.min.js"></script>
+    <script>
+
+        /*
+            1 => 0°
+            3 => 180°
+            6 => 順時針90°
+            8 => 逆時針90°
+        */
+        const file = document.getElementById("file");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        file.addEventListener("change", e=>{
+            let image = new Image();
+            image.src = URL.createObjectURL(e.target.files[0]);
+            image.onload = () => {
+                EXIF.getData(image, function(){
+                    let all = EXIF.getAllTags(this);
+                    console.log(all.Software);
+                    let Orientation = EXIF.getTag(this, 'Orientation');
+                    imageRotate(image, Orientation);
+                });
+            }
+        });
+
+        function imageRotate(image, degIdx) {
+            let w = image.width;
+            let h = image.height;
+            switch (degIdx) {
+                case undefined:
+                    canvas.width = w;
+                    canvas.height = h;
+                    break;
+                case 1:
+                    canvas.width = w;
+                    canvas.height = h;
+                    break;
+                case 3:
+                    canvas.width = w;
+                    canvas.height = h;
+                    ctx.translate(image.width, image.height);
+                    ctx.rotate(180 * Math.PI / 180);
+                    break;
+                case 6:
+                    canvas.width = h;
+                    canvas.height = w;
+                    ctx.translate(image.height, 0);
+                    ctx.rotate(90 * Math.PI / 180);
+                    break;
+                case 8:
+                    canvas.width = h;
+                    canvas.height = w;
+                    ctx.translate(0, image.width);
+                    ctx.rotate(270 * Math.PI / 180);
+                    break;
+                default:
+                    break;
+            }
+            ctx.drawImage(image, 0, 0, w, h);
+        }
+
+    </script>
+</body>
+</html>
