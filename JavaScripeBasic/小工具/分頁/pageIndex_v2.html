@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預設擷取兩筆點擊 展開
+    </title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-12" v-for="(item) of is">
+                    <p>{{ item.title}}</p>
+                    <p>{{ item.content}}</p>
+                    <hr>
+                </div>
+                <button v-if="open" @click="add">more</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    isMyData: [{
+                            id: 1,
+                            title: "標題1",
+                            content: "內容一",
+                        }, {
+                            id: 2,
+                            title: "標題2",
+                            content: "內容2",
+                        }, {
+                            id: 3,
+                            title: "標題3",
+                            content: "內容3",
+                        }, {
+                            id: 4,
+                            title: "標題4",
+                            content: "內容4",
+                        }, {
+                            id: 5,
+                            title: "標題5",
+                            content: "內容5",
+                        }, {
+                            id: 6,
+                            title: "標題6",
+                            content: "內容6",
+                        }
+                    ],
+                    is:[],
+                    open: true
+                };
+            },
+            created(){
+                this.is = this.isMyData.slice(0, 2);
+            },
+            methods: {
+                add() {
+                    this.is = this.isMyData;
+                    this.open = false
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
