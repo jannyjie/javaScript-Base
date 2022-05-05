@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Vue.js] 簡單計時器</title>
+</head>
+
+<body>
+    <div id="app">
+        {{list}}
+    </div>
+    <script src="https://unpkg.com/vue@2.5.22"></script>
+    <script type="module">
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return { 
+                    bachelor: [
+                        {
+                            name: 'janny',
+                            school: '國立臺灣大學視覺設計系'
+                        },
+                        {
+                            name: 'jack',
+                            school: '國立臺灣大學數學系'
+                        },
+                    ] , 
+                }
+            },
+            created() {
+                this.down();
+            },
+            methods: {
+                down(){
+                    const qq = [];
+                    this.bachelor.forEach(element => {
+                        let bb = element.school.indexOf('學');
+                        let cc = element.school.indexOf('系');
+                        let dd = element.school.slice(bb+1,cc+1); 
+                        qq.push(dd)
+                    });
+                    const products = qq.map(ListProducts => ({
+                        id: ListProducts
+                    }));
+
+                    // this.bachelor.forEach((element, index) => {
+                    //     products.map((item, indx) => {
+                    //         return products[indx] + element
+                    //     })
+                    // });
+                    // this.bachelor = products
+
+                   
+                    // // console.log(this.bachelor[k].concat(products[i]))
+
+                    // console.log(this.bachelor);
+                    // console.log(products);
+  
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

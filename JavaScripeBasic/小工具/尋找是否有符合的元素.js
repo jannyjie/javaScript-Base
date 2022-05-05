@@ -48,3 +48,4 @@ const result = newList.filter((value) => value.match(/^小小/g));
 
 console.log(result); // ["小小明", "小小華", "小小美"]
 // 解法為先打平陣列再做搜尋，可參考這裡。
+
