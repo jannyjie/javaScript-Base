@@ -93,3 +93,9 @@ var propname='salary'
 console.log(SumDataMapReduce(dataobj,propname));
 var data=[1,3,5,7]
 console.log(SumDataMapReduce(data));
+
+
+
+array.forEach(element => {
+    
+});
