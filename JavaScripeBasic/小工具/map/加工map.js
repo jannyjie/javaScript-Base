@@ -10,3 +10,4 @@ var friendsData = friends.map(function(value, index){
 console.log(friends, friendsData)
 //friends結果: ["Tom", "Mary", "Ben"]
 //friendsData結果: ["Tom is male.", "Mary is female.", "Ben is male."]
+
