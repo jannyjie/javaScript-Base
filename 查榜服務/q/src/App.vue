@@ -1,94 +1,37 @@
+<!-- App.vue -->
 <template>
-  <metainfo>
-    <template v-slot:title="{ content }">{{ content ? `${content} | 1111人力營行` : `111` }}</template>
-  </metainfo>
-  <router-view />
+  <router-view v-if="isRouterAlive"></router-view>
+  <!-- 在router-view使用isRouterAlive或者是下面这种在组件中使用 -->
+  <!-- <BLank v-if="isRouterAlive"></BLank> -->
 </template>
 
 <script>
-import { useMeta } from 'vue-meta'
-
+import { ref, nextTick, provide } from "vue";
+// import BLank from "@/components/BLank.vue";
 export default {
-  setup () {
-    const { meta } = useMeta({
-      title: '1111',
-      base: { href: '/vue-router', target: '_blank' },
-      charset: 'utf8',
-      og: {
-        title: 'Og Title',
-        description: 'Bla bla',
-        image: [
-          'https://picsum.photos/600/400/?image=80',
-          'https://picsum.photos/600/400/?image=82'
-        ]
-      },
-      twitter: {
-        title: 'Twitter Title'
-      },
-      noscript: [
-        { tag: 'link', rel: 'stylesheet', href: 'style.css' }
-      ],
-      otherNoscript: {
-        tag: 'noscript',
-        'data-test': 'hello',
-        children: [
-          { tag: 'link', rel: 'stylesheet', href: 'style2.css' }
-        ]
-      },
-      body: 'body-script1.js', // TODO: fix
-      bodyAttrs: {
-        class: ['theme-dark']
-      },
-      script: [
-        { src: 'head-script1.js' },
-        { src: 'body-script2.js', to: 'body' },
-        { src: 'body-script3.js', to: '#body-prepend' }
-      ],
-      htmlAttrs: { 
-          amp: true,
-          lang: ['en']
-        },
-        description: 'constants.main.description',
-        meta: [
-            {
-              name: 'author',
-              content: '111111'
-            },
-            {
-              name: 'keywords',
-              content: '11111'
-            },
-            {
-              name: 'robots',
-              content: '1111'
-            }
-          ]
-    })
-    // 兩秒 title 更換
-    setTimeout(() => (meta.title = 'My Updated Title'), 2000)
-  }
-}
+  name: "App",
+  components: {
+    // BLank,
+  },
+  setup() {
+    // 局部组件刷新
+    const isRouterAlive = ref(true);
+    const reload = () => {
+      console.log(isRouterAlive.value);
+      isRouterAlive.value = false;
+      console.log(2);
+      nextTick(() => {
+        // console.log(1);
+        isRouterAlive.value = true;
+        // location.reload();
+        // console.log(isRouterAlive.value);
+      });
+    };
+    provide("reload", reload);
+
+    return {
+      isRouterAlive,
+    };
+  },
+};
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>

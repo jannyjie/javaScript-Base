@@ -94,4 +94,38 @@ palindrome("Whatever revetahW"); // true
 palindrome("Aloha, how are you today?"); // false
 // 編寫一個名為“pyramid”的函數，它接受一個整數作為輸入，並按以下模式打印一個金字塔：
 
+function drawRow(space, star){
+    let result = "";
+    for(let i = 0; i < space; i++){
+        result += "";
+    }
+
+    for(let  i =0; i< star; I++ ){
+
+    }  result +=''
+}
+
+
+function pramid(n){
+    let i = n-1;
+    let j = 1;
+    for(let k  =  1; k <= n;k+++ ){
+        drawRow(i, j)
+        i--;
+        j += 2;
+    }
+}
+
 // 編寫一個名為“inversePyramid”的函數，將金字塔倒置。[  
+
+function inversPyramid(n){
+    let i =0;
+    let j = 2 * n -1;
+    for(let k = 1; k <= n; k++){
+        drawRow(i , j)
+        i++
+        j-= 2
+    }
+}
+
+inversPyramid(10)
