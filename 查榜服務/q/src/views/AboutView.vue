@@ -1,16 +1,21 @@
 <!-- test.vue -->
 <template>
+  <router-link to="/bb">bb</router-link>
   <div>
     <!-- input框输入值，点击按钮，看值会不会清空 -->
     <!-- <input type="text">  -->
   </div>
   <button @click="getGoodsList">测试按钮</button>
+  <TodoItem />
 </template>
 <script>
 import { inject, onMounted, ref} from "vue";
-
-import { useFetchApi } from '../composition-api/useFetch'
+import TodoItem from "@/components/TodoItem.vue";
+import { useFetchApi, loginApi } from '../composition-api/useFetch'
 export default{
+  components: {
+        TodoItem
+  },
   setup() {
     const button = inject("reload");
     onMounted(() => {
@@ -24,6 +29,11 @@ export default{
     }
 
     console.log('user', goodsList);
+    let postData = {
+      email: 'javascriptBasics@gmail.com',
+      password: '1234'
+    };
+    loginApi(postData);
     
     return {button, goodsList, getGoodsList};
   },

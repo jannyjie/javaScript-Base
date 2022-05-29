@@ -1,4 +1,4 @@
-import {get} from '@/api/default/httpConfig.js';
+import {get, post} from '@/api/default/httpConfig.js';
 import {ref} from 'vue'
 
 const url = ref('');
@@ -6,7 +6,7 @@ const url = ref('');
 
 // post格式
 // export const register = p => post('/api/user/register', p);
-// export const login = p => post('/api/user/login', p); 
+export const login = p => post('https://hexschool-tutorial.herokuapp.com/api/signup', p); 
 // // get格式
 // export const courses = g => get('/api/courses', g);
 // export const coursesXq = (g,q) => get('/api/courses/'+q.add, g); 

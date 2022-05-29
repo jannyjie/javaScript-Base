@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/bb">bb</router-link>
   <experience :class-name="`workSwiper`" :itemList="itemList" :delay="5000" :item-list-open="true"  :prev="`prevA`" :next="`nextA`"> 
     <template v-slot:next>
         <p>next</p>
