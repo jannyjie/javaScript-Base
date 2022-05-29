@@ -1,5 +1,7 @@
 <!-- test.vue -->
 <template>
+<input type="text">
+ <button @click="button">测试按钮</button>
   <router-link to="/bb">bb</router-link>
   <div>
     <!-- input框输入值，点击按钮，看值会不会清空 -->
@@ -17,10 +19,19 @@ export default{
         TodoItem
   },
   setup() {
+    // setInterval(function(){
+    //   console.log(22);
+    //   window.location.reload();
+    // }, 5000);
+
+ 
+    
     const button = inject("reload");
+    
     onMounted(() => {
       // window.addEventListener('load', button)
       window.addEventListener('readystatechange', button)
+     
     })
 
     const goodsList = ref();

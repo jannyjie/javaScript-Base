@@ -17,6 +17,7 @@
     </template>
   </experience>
 
+
 </template>
 
 <script>
@@ -57,7 +58,7 @@ export default {
       ]
     )
     return {
-      itemList
+      itemList, 
     }
   }
 }
