@@ -1,15 +1,29 @@
-var aa = ',_大學_01';
-var bb = aa.split(",");
-var cc = aa.split("_");
-var dd = cc.splice(1)
+var aa = [{
+    id: '1',
+    name: [{
+            name: 'janny'
+        },
+        {
+            name: 'jack'
+        }
+    ],
+    kk: ',_大學_01'
+}]
 
 
-dd.map(function (element) {
+aa.forEach(element => {
+  let aa = element.kk
+  var bb = aa.split(",");
+  var cc = aa.split("_");
+  var dd = cc.splice(1)
+  dd.map(function (element) {
     element = {
         aa: element[0],
         bb: element[1],
     }
     return element;
+  });
 });
 
-console.log(dd);
+
+console.log(aa)
