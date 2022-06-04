@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Tajawal')
+
+@mixin size($w,$h:$w)
+    width: $w
+    height: $h
+html,body
+    background-color: #282f38
+    display: flex
+    justify-content: center
+    color: white
+    font-family: 'Tajawal', serif
+
+.coffeeType
+    display: flex
+    align-items: center
+    max-width: 400px
+    border-radius: 5px
+    padding: 10px 20px
+    cursor: pointer
+    border-bottom: solid 1px rgba(white,0.1)
+    transition: 0.5s
+    position: relative
+    &:hover
+        background-color: rgba(white,0.05)
+    .num
+        font-size: 60px
+        flex: 1
+        color: white
+        font-weight: bold
+        margin-right: 30px
+    .cupContainer
+        flex: 1
+
+    .control
+        flex: 2
+
+    .cup
+        border: 4px solid #fff
+        border-top: none
+        border-radius: 0px 0px 50px 50px
+        margin: 10px
+        padding-top: 5px
+        margin-right: 50px
+
+        +size(70px,50px)
+        .ingradients
+            display: flex
+            flex-direction: column-reverse
+            overflow: hidden
+            border-radius: 0px 0px 50px 50px
+            +size(100%)
+
+        //杯子耳朵
+            position: relative
+        &:before
+            content: ''
+            display: block
+            border: 4px solid #fff
+            position: absolute
+            border-radius: 0px 50px 50px 0px
+            border-left: none
+            +size(15px,20px)
+            left: 100%
+            top: 40%
+            transform: translateY(-50%)
+        &.mock
+            +size(60px,90px)
+            border-radius: 0
+        .ingradients
+            border-radius: 0
+        &.small
+            +size(50px,40px)
+        &.big
+            +size(80px,50px)
+
+    .coffee,.milk,.water,.bubble
+        background-color: #66491a
+
+    .bubble
+        background-color: #eee
+    .milk
+        background-color: #f7d8bb
+    .water
+        background-color: #589bce
+
+    &.showMode
+        input,label,select,br
+            display: none
+    &.favorite
+        &:before
+            content: 'BEST'
+            border: 5px solid
+            padding: 5px 3px
+            line-height: 0.9
+            display: block
+            color: #ff5e5e
+            position: absolute
+            font-size: 30px
+            transform: translateX(-70px) rotate(-20deg)
+
+.hiddenControl
+    position: fixed
+    left: 10px
+    top: 10px

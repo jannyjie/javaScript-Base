@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div id="app"><a class="ticket" :href="ticket.link" target="_blank">
+            <div class="date">{{ ticket.date }}</div>
+            <div class="info">{{ company }}</div>
+            <div class="info">{{ ticket.direction == 'north' ? '北上' : '南下' }}</div>
+            <div class="station">{{ ticket.from }}站</div>
+            <div class="arrow">↓</div>
+            <div class="station">{{ ticket.to }}站</div>
+            <div class="info">{{ ticket.other }}</div>
+            <div class="info">售價{{ ticket.price * ticket.discount }}元</div>
+        </a></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

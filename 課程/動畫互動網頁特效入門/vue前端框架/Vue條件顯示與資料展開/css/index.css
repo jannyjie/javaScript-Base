@@ -1,0 +1,67 @@
+html, body {
+  font-family: serif;
+  background-color: #dbcdb8;
+}
+
+.menu {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin: 10px;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.card:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.card .cover {
+  width: 220px;
+}
+
+.card .info {
+  padding: 10px;
+}
+
+.card .info h3 {
+  margin: 0;
+}
+
+.card .info .soldOut {
+  float: right;
+  opacity: 1;
+  color: #e84c4c;
+}
+
+.card .info .price {
+  font-size: 40px;
+}
+
+.card .info .other {
+  display: inline-block;
+  opacity: 0.4;
+  font-size: 16px;
+}
+
+input {
+  padding: 5px 10px;
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
+input:not([type='checkbox']) {
+  width: 80px;
+}
+/*# sourceMappingURL=index.css.map */

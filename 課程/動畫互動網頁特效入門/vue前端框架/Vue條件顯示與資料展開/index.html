@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="control">
+            <label>最小價錢</label>
+            <input class="w80" v-model="minPrice" type="number" />
+            <label>最大價錢</label>
+            <input class="w80" v-model="maxPrice" type="number" />
+            <label>基礎價格</label>
+            <input class="w80" v-model.number="basePrice" type="number" />
+            <label>服務費</label>
+            <input class="w80" v-model.number="serviceFee" type="number" />
+            <label>關鍵字</label>
+            <input class="w80" v-model="keyword" placeholder="請輸入關鍵字" /><br /><span
+                v-for="(card,cid) in cards"><span>{{cid}}</span>
+                <input type="checkbox" v-model="card.soldOut" />
+                <input class="w80" v-model.number="card.price" /></span>
+        </div>
+        <div class="menu">
+            <div class="cards">
+                <div class="card" v-for="card in cards"
+                    v-if = "card.price+basePrice>=minPrice && card.price+basePrice<=maxPrice && ( keyword=='' || card.title.indexOf(keyword)!=-1)")>
+                    <img class="cover" :src="card.cover" />
+                    <div class="info">
+                        <h3>{{card.title}}
+                            <div class="soldOut" v-show="card.soldOut">已售完</div>
+                        </h3>
+                        <div class="price">{{basePrice+card.price}}$
+                            <div class="other">(+{{serviceFee}}%服務費)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.0/vue.common.dev.js' integrity='sha512-Ryob1tfjCXJDy6xY1It8ueJg9KFXapHn/A/M7XGiPk0HKx7SJqg/qQ65GPqkIShYu21PkNsJvPr7PYUpmTbjsA==' crossorigin='anonymous'></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

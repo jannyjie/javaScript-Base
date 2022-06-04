@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <button @click="a += 1;b -= 1;">a+ and b-</button>
+            {{a}}:{{b}}
+        </div>
+        <div>
+            <button @click="aPlus1AndbMinus">a+ and b-</button>
+            {{a}}:{{b}}
+        </div>
+        <div>
+            <button @click="clickWhat('hi', $event)">hi</button>
+            <button @click="clickWhat('yo', $event)">yo</button>
+            You click {{what}} {{tag}}
+        </div>
+        <div>
+            <button v-on="{ mousedown: showDown, mouseup: showUp }">click me</button>
+            {{doWhat}}
+        </div>
+        <form @submit.prevent>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.0/vue.common.dev.js'
+        integrity='sha512-Ryob1tfjCXJDy6xY1It8ueJg9KFXapHn/A/M7XGiPk0HKx7SJqg/qQ65GPqkIShYu21PkNsJvPr7PYUpmTbjsA=='
+        crossorigin='anonymous'></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

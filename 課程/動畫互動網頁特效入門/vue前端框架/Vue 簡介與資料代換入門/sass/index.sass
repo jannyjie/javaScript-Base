@@ -1,0 +1,35 @@
+html,body
+    background-color: #333
+    height: 100%
+    margin: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: serif
+.ticket
+    padding: 30px 15px
+    margin: 20px
+    text-align: center
+    display: inline-block
+    text-decoration: none
+    color: black
+
+    // border: solid 1px
+    box-shadow: 0px 10px 10px rgba(black,0.1)
+    background-color: #fff
+    background-image: radial-gradient(#d1e8c9 0%,#d1e8c9 20%,transparent 20%,transparent 40%, #d1e8c9 55%, #d1e8c9 60%,transparent 60%)
+    background-size: 30px 30px
+
+    transition: 0.5s
+    .arrow
+        font-size: 40px
+    .station
+        font-size: 30px
+        margin: 20px 10px
+        font-weight: bold
+    .info
+        font-size: 18px
+        margin-top: 10px
+    &:hover
+        transform: translate(0px,-10px)
+        box-shadow: 0px 10px 30px rgba(black,0.2)

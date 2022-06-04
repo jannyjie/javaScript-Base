@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <label class="hiddenControl">Editing:
+            <input v-model="editing" type="checkbox" />
+            <select v-model="favoriteType">
+                <option v-for="coffee in coffees" :value="coffee.name">{{coffee.name}}</option>
+            </select>
+        </label><br />
+        <h2>Vue.js Coffee Editor</h2>
+        <div class="coffeeType" v-for="(coffee,cid) in coffees"
+            :class="{showMode: !editing, favorite: coffee.name==favoriteType}">
+            <div class="num">0{{cid}}</div>
+            <div class="cupContainer">
+                <div class="cup" :class="[coffee.type]">
+                    <div class="ingradients">
+                        <div class="coffee" :style="{height: coffee.coffee+'%'}"></div>
+                        <div class="milk" :style="{height: coffee.milk+'%'}"></div>
+                        <div class="water" :style="{height: coffee.water+'%'}"></div>
+                        <div class="bubble" :style="{height: coffee.bubble+'%'}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="control">
+                <h2>{{coffee.name}}</h2>
+                <select v-model="coffee.type">
+                    <option v-for="cupType in cupTypes" :value="cupType">{{cupType}}</option>
+                </select>
+                <div v-for="type in ['coffee','milk','bubble','water']">
+                    <label>{{type}}: {{coffee[type]}}</label>
+                    <input type="range" v-model="coffee[type]" min="0" max="100" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.0/vue.common.dev.js'
+        integrity='sha512-Ryob1tfjCXJDy6xY1It8ueJg9KFXapHn/A/M7XGiPk0HKx7SJqg/qQ65GPqkIShYu21PkNsJvPr7PYUpmTbjsA=='
+        crossorigin='anonymous'></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <form id="app" @submit.prevent="checkForm" action="/something" method="post">
+
+        <p v-if="errors.length">
+            <b>Please correct the following error(s):</b>
+            <ul>
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </p>
+
+        <p>
+            <label for="name">Name<label>
+                    <input type="text" name="name" id="name" v-model="name">
+        </p>
+
+        <p>
+            <label for="age">Age<label>
+                    <input type="number" name="age" id="age" v-model="age" min="0">
+        </p>
+
+        <p>
+            <label for="movie">Favorite Movie<label>
+                    <select name="movie" id="movie" v-model="movie">
+                        <option>Star Wars</option>
+                        <option>Vanilla Sky</option>
+                        <option>Atomic Blonde</option>
+                    </select>
+        </p>
+
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+
+    </form>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.0/vue.common.dev.js'
+        integrity='sha512-Ryob1tfjCXJDy6xY1It8ueJg9KFXapHn/A/M7XGiPk0HKx7SJqg/qQ65GPqkIShYu21PkNsJvPr7PYUpmTbjsA=='
+        crossorigin='anonymous'></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
