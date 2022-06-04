@@ -1,17 +1,22 @@
 <!-- App.vue -->
 <template>
-  <router-view v-if="isRouterAlive"></router-view>
+  <div id="app" class="app-containt">
+    <NavBar />
+    <!-- <router-view v-if="isRouterAlive"></router-view> -->
+    <router-view class="router-containt" v-if="isRouterAlive"></router-view>
+  </div>
+
   <!-- 在router-view使用isRouterAlive或者是下面这种在组件中使用 -->
   <!-- <BLank v-if="isRouterAlive"></BLank> -->
 </template>
 
 <script>
 import { ref, nextTick, provide } from "vue";
-// import BLank from "@/components/BLank.vue";
+import NavBar from "@/components/NavBar";
 export default {
   name: "App",
   components: {
-    // BLank,
+    NavBar,
   },
   setup() {
     // 局部组件刷新

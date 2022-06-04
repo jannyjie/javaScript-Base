@@ -46,10 +46,10 @@ function removePendingRequest(config) {
 axios.interceptors.request.use(
     config => {
         //  進到頁面刷新一次
-        if(location.href.indexOf("#reloaded")==-1){
-            location.href = location.href+"#reloaded";
-            location.reload();
-        }
+        // if(location.href.indexOf("#reloaded")==-1){
+        //     location.href = location.href+"#reloaded";
+        //     location.reload();
+        // }
         
         console.log(config);
         removePendingRequest(config); // 檢查是否存在重複請求，若存在則取消已發的請求
