@@ -1,0 +1,1 @@
+console.log(new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString()); // "2022-06-02T23:39:02.000Z"
