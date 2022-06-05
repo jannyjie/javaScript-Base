@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage_with_Object</title>
+</head>
+<body>
+    <script>
+        // JSON.stringify()
+        // JSON.parse()
+        let friends = ["Josh", "Mike", "Doug"]
+        localStorage.setItem("friends", JSON.stringify(friends))
+        
+        // 提取存進  localStorage 的 array
+        console.log(JSON.parse(localStorage.getItem("friends")));
+    </script>
+</body>
+</html>

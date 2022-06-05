@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>target preventDefault() style </title>
+</head>
+<body>
+    <h1>target preventDefault()</h1>
+    <button type="submit">按鈕</button>
+
+    <p>style</p>
+    <script>
+        let h1 = document.querySelector("h1")
+        h1.addEventListener("click", e => {
+            console.log(e.target);
+            console.log(e.target.innerHTML);
+        })
+
+        let button = document.querySelector("button")
+        button.addEventListener("click", e => {
+            e.preventDefault();
+            // 表示裡面的東西不會被提交出去
+        })
+
+        let p = document.querySelector("p")
+        console.log(p.style.backgroundColor = 'red');
+
+    </script>
+</body>
+</html>

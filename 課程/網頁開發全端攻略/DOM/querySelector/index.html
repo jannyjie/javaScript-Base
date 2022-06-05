@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector/ querySelectorAll</title>
+</head>
+<body>
+    <h1 id="first">my first h1</h1>
+    <h1 class="second">Jenny</h1>
+    <p class="second">This is paragraph</p>
+    <p class="second">This is paragraph</p>
+    <script>
+        // querySelector 只會抓取第一個
+        // let second1 = document.querySelector("h1.second")
+
+        let second2 = document.querySelectorAll(".second")
+        // NodeList is not an array
+        console.log(second2);
+    </script>
+</body>
+</html>

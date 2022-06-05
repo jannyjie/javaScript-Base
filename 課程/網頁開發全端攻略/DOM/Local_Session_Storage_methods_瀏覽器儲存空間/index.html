@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local_Session_Storage_methods_瀏覽器儲存空間</title>
+</head>
+<body>
+    <script>
+        // localStorage 
+        // key 不能有重複
+        // 沒有 expiration date 沒有過期的日子
+        // 除非用 localStorage.clear() / localStorage.removeItem()
+        console.log(window.localStorage);
+
+        // setItem / getItem / removeItem / clear
+        localStorage.setItem("name", "jenny")
+        localStorage.setItem("add", "add")
+        
+
+        // 要拿存進 setItem 需要用' getItem
+
+        let myAddress = localStorage.getItem("name")
+        console.log(myAddress);
+        
+
+        // 如果要刪除 localStorage 資料
+        let myRemoveItem = localStorage.removeItem("add")
+        console.log(myRemoveItem);
+
+        // Session Storage 瀏覽器 關閉就會清空
+        sessionStorage.setItem("name", "jenny")
+        sessionStorage.setItem("add", "add")
+    </script>
+</body>
+</html>

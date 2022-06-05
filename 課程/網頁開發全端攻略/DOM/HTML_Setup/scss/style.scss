@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+i{
+    // 元素永远不会成为鼠标事件的target。但是，
+    // 当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，
+    // 在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。
+    pointer-events: none;
+}
+
+body {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+}
+
+header {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    h1 {
+        color: white;
+        font-size: 3rem;
+    }
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input,
+    button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        margin: 0.1rem;
+    }
+
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        width: 50px;
+        text-align: center;
+    }
+
+    /* firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    button {
+        cursor: pointer;
+        background: #fee8ce;
+        font-size: 16px;
+        height: 40px;
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div.todo {
+        width: 36vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #fff;
+    }
+
+    p {
+        background: #fff;
+        padding: 0.23rem 5px;
+    }
+
+    p.todo-text {
+        width: 50%;
+    }
+
+    p.todo-time {
+        width: 20%;
+        text-align: center;
+    }
+
+    button {
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    button.complete {
+        background-color: #f39d81;
+    }
+
+    button.trash {
+        background-color: #ed744d;
+    }
+}
+
+div.sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+
+    button {
+        cursor: pointer;
+        background-color: rgb(0, 146, 114);
+        color: white;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+    }
+}
+
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleDown {
+    to {
+        transform: scale(0);
+    }
+}

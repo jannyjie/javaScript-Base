@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event_Bubbling</title>
+    <style>
+        .a{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        .b{
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="a"><div class="b"></div></div>
+    <script>
+        let a = document.querySelector("div.a")
+        let b = document.querySelector("div.b")
+
+        a.addEventListener("click", () => {
+            alert("a")
+        })
+
+        b.addEventListener("click", (e) => {
+            // 點 B 時 同時會觸發A 但加上 stopPropagation 就不會觸發A 
+            e.stopPropagation();
+            alert("b")
+        })
+    </script>
+</body>
+</html>

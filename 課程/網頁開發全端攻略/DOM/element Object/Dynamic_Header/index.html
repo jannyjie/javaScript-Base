@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic_Header</title>
+    <style>
+        body{
+            margin: 0;
+            height: 3000px;
+        }
+        header {
+            position: fixed;
+            background: #fff;
+            box-shadow: 0px 4px 9px #00000042;
+            width: 100%;
+        }
+        ul {
+            display: flex;
+        }
+        li {
+            list-style-type: none;
+            padding: 0 10px;
+        }
+        a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="#">aa</a></li>
+            <li><a href="#">aa</a></li>
+            <li><a href="#">aa</a></li>
+        </ul>
+    </header>
+    <script>
+        // window.pageYOffset property
+        // scroll event
+        // style object
+
+        let header = document.querySelector('header');
+        let headerAnchor = document.querySelectorAll('header ul li a');
+        window.addEventListener("scroll", () => {
+            // console.log(window.pageYOffset);
+            if(window.pageYOffset != 0) {
+                header.style.backgroundColor = "black"
+                header.style.color = "white"
+                headerAnchor.forEach(element => {
+                    element.style.color = "white"
+                });
+            }else{
+                // header.style.backgroundColor = "#fff"
+                header.style = ""
+                headerAnchor.forEach(element => {
+                    element.style.color = ""
+                });
+            }
+        })
+    </script>
+</body>
+</html>
