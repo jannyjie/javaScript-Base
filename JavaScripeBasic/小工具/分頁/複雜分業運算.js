@@ -10,8 +10,11 @@ for (let i = 0; i < total; i++) {
 console.log(aa)
 if (one + 9 <= total) {
     console.log(1)
-    console.log(aa.slice(one - 1, one + (num - 1)))
+    console.log(aa.slice(one - 1, one + (num - 13)))
 } else if (one + 9 >= total) {
     console.log(2)
     console.log(aa.slice(total - num, total))
 }
+
+
+

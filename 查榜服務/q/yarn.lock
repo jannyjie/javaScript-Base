@@ -6030,7 +6030,7 @@
   "resolved" "https://registry.npmjs.org/vue-meta/-/vue-meta-3.0.0-alpha.10.tgz"
   "version" "3.0.0-alpha.10"
 
-"vue-router@^4.0.3":
+"vue-router@^4.0.15":
   "integrity" "sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.15.tgz"
   "version" "4.0.15"

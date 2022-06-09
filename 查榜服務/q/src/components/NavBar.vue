@@ -31,6 +31,12 @@
             <router-link class="nav-link" to="/excel">Excel</router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" to="/lodash">lodash</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/pagination">分頁</router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" to="/login">
               <template v-if="store.isLogin !== true">登入</template>
               <template v-else>登出</template>
