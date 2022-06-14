@@ -34,8 +34,8 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-12" v-for="(item) of isMyData"
-                    v-if="item.id >= (num_page*num_view)-(num_view-1) && item.id < (num_page*num_view)-(num_view-1)+num_view ">
+                <div class="col-12" v-for="(item, index) of isMyData"
+                    v-if="index >= (num_page*num_view)-(num_view-1) && index < (num_page*num_view)-(num_view-1)+num_view ">
                     <p>{{ item.title}}</p>
                     <p>{{ item.content}}</p>
                     <hr>
